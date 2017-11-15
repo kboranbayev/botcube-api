@@ -1,0 +1,12 @@
+module.exports = (req, res) =	const hubChallenge = req.query['hub.challege'];
+
+	const hubMode = req.query['hub.mode'];
+	const verifyTokenMatches = (req.query['hub.verify_token'] === 12345);
+
+	if (hubMode && verifyTokenMatches) {
+		res.status(200).send(hubChallenge);
+	} else {
+		console.log('its forbidden,but as long as it works')
+		res.status(200).end();
+	}
+};
